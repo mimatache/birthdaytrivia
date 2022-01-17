@@ -3,8 +3,9 @@ package question_test
 import (
 	"testing"
 
-	"github.com/mimatache/mariashi/questionaire/question"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/mimatache/birthdaytrivia/trivia/question"
 )
 
 var (
@@ -40,7 +41,7 @@ func Test_Question_IsCorrect(t *testing.T) {
 			correct: false,
 		},
 	}
-	q := question.Question{
+	q := &question.Question{
 		Text:    "Your question here?",
 		Answers: []question.Answer{validAnswer, invalidAnswer},
 	}
@@ -49,6 +50,20 @@ func Test_Question_IsCorrect(t *testing.T) {
 			assert.Equal(t, test.correct, q.IsCorrect(test.answer))
 		})
 	}
+}
+
+func Test_Question_NumIncorrect(t *testing.T) {
+	q := &question.Question{
+		Text:    "Your question here?",
+		Answers: []question.Answer{validAnswer, invalidAnswer},
+	}
+	q.IsCorrect(1)
+	assert.Equal(t, 1, q.NumIncorrect())
+	q.IsCorrect(1)
+	assert.Equal(t, 2, q.NumIncorrect())
+	q.IsCorrect(0)
+	assert.Equal(t, 2, q.NumIncorrect())
+	
 }
 
 func Test_Question_Validate(t *testing.T) {

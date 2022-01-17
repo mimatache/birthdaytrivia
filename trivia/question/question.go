@@ -15,19 +15,21 @@ type Question struct {
 	Text    string   `json:"question"`
 	Answers []Answer `json:"answers"`
 	Points  int      `json:"points"`
+	wrongAnswers int
 }
 
-func (q Question) IsCorrect(answer int) bool {
+func (q *Question) IsCorrect(answer int) bool {
 	if len(q.Answers) <= answer || answer < 0 {
 		return false
 	}
 	if !q.Answers[answer].IsTrue {
+		q.wrongAnswers += 1
 		return false
 	}
 	return true
 }
 
-func (q Question) Validate() error {
+func (q *Question) Validate() error {
 	if q.Text == "" {
 		return ErrNoTextProvided
 	}
@@ -47,6 +49,10 @@ func (q Question) Validate() error {
 		return ErrNoValidAnswer
 	}
 	return nil
+}
+
+func (q *Question) NumIncorrect() int {
+	return q.wrongAnswers
 }
 
 type Answer struct {
