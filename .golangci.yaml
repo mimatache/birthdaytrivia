@@ -11,6 +11,7 @@ linters:
     - gofmt
     - goimports
     - govet
+    - gosec
     - goprintffuncname
     - misspell
     - nakedret
@@ -22,6 +23,6 @@ linters:
 
 linters-settings:
   goimports:
-    local-prefixes: github.com/mimatache/cyscale
+    local-prefixes: github.com/mimatache/birthdaytrivia
   gofmt:
     simplify: true

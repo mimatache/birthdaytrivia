@@ -5,7 +5,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/mimatache/mariashi/internal/info"
+	"github.com/mimatache/birthdaytrivia/internal/info"
 )
 
 // Version gives dinformation about the current application (version, build date, hash) to be able to more easily track down the build

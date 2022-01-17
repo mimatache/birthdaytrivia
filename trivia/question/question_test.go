@@ -63,7 +63,6 @@ func Test_Question_NumIncorrect(t *testing.T) {
 	assert.Equal(t, 2, q.NumIncorrect())
 	q.IsCorrect(0)
 	assert.Equal(t, 2, q.NumIncorrect())
-	
 }
 
 func Test_Question_Validate(t *testing.T) {

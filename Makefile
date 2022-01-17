@@ -1,5 +1,5 @@
 SHELL:=/bin/bash
-APP:=mariashi
+APP:=birthdaytrivia
 BUILD_DIR:=.build
 BIN_DIR:=$(BUILD_DIR)/$(APP)/_bin
 
@@ -10,10 +10,10 @@ VERSION ?= $(shell git describe --tags --dirty --always)
 BUILD_DATE ?= $(shell date +%FT%T%z)
 COMMIT_HASH ?= $(shell git rev-parse --short HEAD 2>/dev/null)
 
-LDFLAGS += -X 'github.com/mimatache/mariashi/internal/info.appName=${APP}'
-LDFLAGS += -X 'github.com/mimatache/mariashi/internal/info.version=${VERSION}'
-LDFLAGS += -X 'github.com/mimatache/mariashi/internal/info.commitHash=${COMMIT_HASH}'
-LDFLAGS += -X 'github.com/mimatache/mariashi/internal/info.buildDate=${BUILD_DATE}'
+LDFLAGS += -X 'github.com/mimatache/birthdaytrivia/internal/info.appName=${APP}'
+LDFLAGS += -X 'github.com/mimatache/birthdaytrivia/internal/info.version=${VERSION}'
+LDFLAGS += -X 'github.com/mimatache/birthdaytrivia/internal/info.commitHash=${COMMIT_HASH}'
+LDFLAGS += -X 'github.com/mimatache/birthdaytrivia/internal/info.buildDate=${BUILD_DATE}'
 
 
 all: install-go-tools lint test build

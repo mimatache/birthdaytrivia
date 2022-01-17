@@ -12,9 +12,9 @@ var (
 )
 
 type Question struct {
-	Text    string   `json:"question"`
-	Answers []Answer `json:"answers"`
-	Points  int      `json:"points"`
+	Text         string   `json:"question"`
+	Answers      []Answer `json:"answers"`
+	Points       int      `json:"points"`
 	wrongAnswers int
 }
 
