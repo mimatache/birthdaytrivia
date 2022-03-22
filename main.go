@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/mimatache/mariashi/internal/commands"
+	"github.com/mimatache/birthdaytrivia/internal/commands"
 )
 
 func main() {
