@@ -1,0 +1,14 @@
+- question: Is this an example questions?
+  answers:
+  - answer: No
+  - answer: I don't know
+  - answer: yes
+    isTrue: true
+  - answer: Maybe
+- question: Is this another example questions?
+  answers:
+  - answer: No
+  - answer: I don't know
+  - answer: yes
+    isTrue: true
+  - answer: Maybe

@@ -12,10 +12,8 @@ var (
 )
 
 type Question struct {
-	Text         string   `json:"question"`
-	Answers      []Answer `json:"answers"`
-	Points       int      `json:"points"`
-	wrongAnswers int
+	Text    string   `yaml:"question"`
+	Answers []Answer `yaml:"answers"`
 }
 
 func (q *Question) IsCorrect(answer int) bool {
@@ -23,7 +21,6 @@ func (q *Question) IsCorrect(answer int) bool {
 		return false
 	}
 	if !q.Answers[answer].IsTrue {
-		q.wrongAnswers += 1
 		return false
 	}
 	return true
@@ -51,13 +48,9 @@ func (q *Question) Validate() error {
 	return nil
 }
 
-func (q *Question) NumIncorrect() int {
-	return q.wrongAnswers
-}
-
 type Answer struct {
-	Text   string `json:"answer"`
-	IsTrue bool   `json:"isTrue"`
+	Text   string `yaml:"answer"`
+	IsTrue bool   `yaml:"isTrue"`
 }
 
 func (a Answer) Validate() error {

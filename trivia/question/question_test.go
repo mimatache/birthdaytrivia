@@ -52,19 +52,6 @@ func Test_Question_IsCorrect(t *testing.T) {
 	}
 }
 
-func Test_Question_NumIncorrect(t *testing.T) {
-	q := &question.Question{
-		Text:    "Your question here?",
-		Answers: []question.Answer{validAnswer, invalidAnswer},
-	}
-	q.IsCorrect(1)
-	assert.Equal(t, 1, q.NumIncorrect())
-	q.IsCorrect(1)
-	assert.Equal(t, 2, q.NumIncorrect())
-	q.IsCorrect(0)
-	assert.Equal(t, 2, q.NumIncorrect())
-}
-
 func Test_Question_Validate(t *testing.T) {
 	tests := []struct {
 		name        string
