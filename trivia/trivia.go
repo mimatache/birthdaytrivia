@@ -1,12 +1,16 @@
 package trivia
 
 import (
+	"errors"
+
 	"gopkg.in/yaml.v3"
 
 	"github.com/hashicorp/go-multierror"
 
 	"github.com/mimatache/birthdaytrivia/trivia/question"
 )
+
+var ErrNoMoreQuestions = errors.New("no more questions")
 
 type Game struct {
 	Questions       []*question.Question `json:"questions"`
@@ -34,7 +38,7 @@ func WithQuestions(questions []byte) Option {
 
 func NewGame(options ...Option) (*Game, error) {
 	game := &Game{
-		currentQuestion: -1,
+		currentQuestion: 0,
 	}
 	var errs error
 	for _, o := range options {
@@ -45,18 +49,20 @@ func NewGame(options ...Option) (*Game, error) {
 	return game, errs
 }
 
-// Next returns the next question in the list if it exists and a true. Otherwise returns and empty question and false
-func (g *Game) Next() (*question.Question, bool) {
-	g.currentQuestion += 1
+func (g *Game) GetCurrentQuestion() (*question.Question, error) {
 	if len(g.Questions) > g.currentQuestion {
-		return g.Questions[g.currentQuestion], true
+		return g.Questions[g.currentQuestion], nil
 	}
-	return nil, false
+	return nil, ErrNoMoreQuestions
 }
 
-func (g *Game) IsAnswerCorrect(answer int) bool {
-	if answer >= len(g.Questions[g.currentQuestion].Answers) || !g.Questions[g.currentQuestion].IsCorrect(answer) {
-		return false
-	}
-	return true
+// Next returns the next question in the list if it exists and a true. Otherwise returns and empty question and false
+func (g *Game) Next() bool {
+	ok := len(g.Questions)-1 > g.currentQuestion
+	g.currentQuestion += 1
+	return ok
+}
+
+func (g *Game) Reset() {
+	g.currentQuestion = 0
 }

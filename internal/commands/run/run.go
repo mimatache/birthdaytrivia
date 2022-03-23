@@ -1,19 +1,20 @@
 package run
 
 import (
-	"bufio"
 	"fmt"
+	"net/http"
 	"os"
-	"strconv"
-	"strings"
 
+	"github.com/gorilla/mux"
 	"github.com/spf13/cobra"
 
 	"github.com/mimatache/birthdaytrivia/trivia"
+	"github.com/mimatache/birthdaytrivia/trivia/api"
 )
 
 func Command() *cobra.Command {
 	var questionsFiles []string
+	var port int
 
 	cmd := &cobra.Command{
 		Use:   "run",
@@ -31,36 +32,20 @@ func Command() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			q, hasNext := tg.Next()
-			for hasNext {
-				fmt.Println(q.Text)
-				for i, v := range q.Answers {
-					fmt.Printf("\t %d) %s \n", i+1, v.Text)
-				}
-				fmt.Print("Answer:  ")
-				reader := bufio.NewReader(os.Stdin)
-				text, err := reader.ReadString('\n')
-				if err != nil {
-					return err
-				}
-				// convert CRLF to LF
-				text = strings.ReplaceAll(text, "\n", "")
-				a, err := strconv.Atoi(text)
-				if err != nil {
-					return err
-				}
-				if tg.IsAnswerCorrect(a - 1) {
-					fmt.Println("Correct")
-					q, hasNext = tg.Next()
-					continue
-				}
-				fmt.Println("Incorrect")
-			}
+			game := api.New(tg)
 
-			return nil
+			router := mux.NewRouter()
+			game.Register(router.PathPrefix("/api/v1").Subrouter())
+			if err := http.ListenAndServe(fmt.Sprintf(":%d", port), router); err != nil && err != http.ErrServerClosed {
+				return err
+			}
+			fmt.Println("stop received")
+			fmt.Println("wg done")
+			return err
 		},
 	}
 
+	cmd.Flags().IntVarP(&port, "port", "p", 8080, "api server port")
 	cmd.Flags().StringSliceVarP(&questionsFiles, "file", "f", []string{"questions/_template.yaml"}, "file containing the questions")
 	return cmd
 }

@@ -3,6 +3,7 @@ module github.com/mimatache/birthdaytrivia
 go 1.17
 
 require (
+	github.com/gorilla/mux v1.8.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/spf13/cobra v1.3.0
 	github.com/stretchr/testify v1.7.0

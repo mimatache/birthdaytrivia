@@ -13,7 +13,6 @@ COPY main.go main.go
 COPY internal/ internal/
 COPY trivia/ trivia/
 
-
 ARG APP
 ARG VERSION
 ARG BUILD_DATE
@@ -28,5 +27,10 @@ FROM gcr.io/distroless/static:nonroot
 WORKDIR /
 COPY --from=builder /workspace/birthdaytrivia .
 USER nonroot:nonroot
+
+# Copy the questions
+COPY questions/ questions/
+
+EXPOSE 8080
 
 ENTRYPOINT ["/birthdaytrivia"]
