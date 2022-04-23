@@ -25,7 +25,7 @@ build: build-ui
 
 build-ui:
 	pushd web/trivia-ui && \
-	npm install && \
+	npm install --legacy-peer-dep && \
 	npm run build && \
 	popd
 

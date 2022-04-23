@@ -9,9 +9,25 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
 
 import TriviaService, { QuestionResponse } from '../../services/questionaire/questionaire'
 import ImageService from '../../services/image/image'
+
+
+const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
 interface GameProps {
     api: TriviaService;
@@ -26,6 +42,7 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
     const [isAnswerCorrect, setIsAnswerCorrect] = useState(false)
     const [q, setQuestion] = useState<QuestionResponse>();
     const [img, setImg] = useState<string>();
+    const [modalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
         const fetchQuestion = () => {
@@ -39,6 +56,8 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const handleOpen = () => setModalOpen(true);
+    const handleClose = () => setModalOpen(false);
 
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue((event.target as HTMLInputElement).value);
@@ -61,7 +80,7 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
                 setNextDisabled(!response.hasNext)
             } else if (!response.isAnswerCorrect) {
                 handleReset();
-                setHelperText('Nu prea te pricepi. O luam de la capat!');
+                handleOpen();
                 setError(true);
             } else {
                 setHelperText('Bafta :) !');
@@ -104,6 +123,21 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
             marginTop: "50px",
             marginBottom: "50px"
         }}>
+        <Modal
+            open={modalOpen}
+            onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        >
+            <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+                Nu prea te pricepi.
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                O luam de la capat!
+            </Typography>
+            </Box>
+        </Modal>
         <Card>
         {(isAnswerCorrect) && <CardMedia
             component="img"
