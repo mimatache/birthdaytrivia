@@ -17,7 +17,6 @@ jobs:
           force-bump-patch-version: true
   artifacts:
     name: Build Go Binary
-    needs: tag
     runs-on: ubuntu-latest
     strategy:
       matrix:
