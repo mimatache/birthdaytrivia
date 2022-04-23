@@ -5,8 +5,18 @@ on:
     branches: [main]
 
 jobs:
-  release:
-    name: Release Go Binary
+  tag:
+    name: Tag a new release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: go-semantic-release/action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          allow-initial-development-versions: true
+          force-bump-patch-version: true
+  artifacts:
+    name: Build Go Binary
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,11 +33,6 @@ jobs:
       - name: Set BUILD_TIME env
         run: echo BUILD_TIME=$(date) >> ${GITHUB_ENV}
       - run: make build-ui
-      - uses: go-semantic-release/action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          allow-initial-development-versions: true
-          force-bump-patch-version: true
       - uses: wangyoucao577/go-release-action@v1.22
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
