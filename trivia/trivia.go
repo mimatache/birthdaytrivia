@@ -1,14 +1,17 @@
 package trivia
 
 import (
+	"embed"
 	"errors"
 
-	"gopkg.in/yaml.v3"
-
 	"github.com/hashicorp/go-multierror"
+	"gopkg.in/yaml.v3"
 
 	"github.com/mimatache/birthdaytrivia/trivia/question"
 )
+
+//go:embed game_questions/*
+var questionsFiles embed.FS
 
 var ErrNoMoreQuestions = errors.New("no more questions")
 
@@ -34,6 +37,29 @@ func WithQuestions(questions []byte) Option {
 		g.Questions = append(g.Questions, q...)
 		return errs
 	}
+}
+
+func DefaultGame() (*Game, error) {
+	opts := []Option{}
+	entries, err := questionsFiles.ReadDir("game_questions")
+	if err != nil {
+		return nil, err
+	}
+	for _, questionsFile := range entries {
+		if questionsFile.IsDir() {
+			continue
+		}
+		qs, err := questionsFiles.ReadFile("game_questions/" + questionsFile.Name())
+		if err != nil {
+			return nil, err
+		}
+		opts = append(opts, WithQuestions(qs))
+	}
+	tg, err := NewGame(opts...)
+	if err != nil {
+		return nil, err
+	}
+	return tg, nil
 }
 
 func NewGame(options ...Option) (*Game, error) {

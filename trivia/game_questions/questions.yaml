@@ -1,0 +1,110 @@
+- question: Unde l-am cunoscut noi pe Marius
+  answers:
+  - answer: Vara 2019
+  - answer: La munte
+  - answer: La o bere
+  - answer: La mare
+    isTrue: true
+  - answer: Vara 2017
+  - answer: L-am cunoscut inainte sa-l vedem
+  image: mandm.jpg
+- question: A doua zi de Pasti, acum 6 ani?
+  answers:
+  - answer: Cu familia
+  - answer: Spargeam oua
+  - answer: Imi infundam fata la Hard Rock Caffe
+    isTrue: true
+  - answer: Invatam, normal
+  - answer: Mici si cefe
+  - answer: Nemurirea sufletului si misterul extraterestrilor
+  image: hardrock.jpg
+- question: Cum se invata cel mai bine?
+  answers:
+  - answer: Pe genunchi
+  - answer: Cu muraturi in spate
+    isTrue: true
+  - answer: Stand in pozitie de yoga
+  - answer: In Carrefour langa raftul de Belvita
+  - answer: In timp ce le explic prietenilor mei <3
+  - answer: Cu o visinata de Baicoi
+  image: invatat.jpg
+- question: Cum se fumeaza corect?
+  answers:
+  - answer: Cu privire blajina, tigara in mana dreapta (intre aratator si mijlociu)
+    isTrue: true
+  - answer: Cand o aprinzi de la un foc de tabara, aproape sa renunti la sprancene
+  - answer: Tigarea uitata in scrumiera in timp ce vezi un film
+  - answer: Eu nu fumez. Nu stiu 
+  - answer: Cu ambele maini, daca ai tupeu si cu ambele picioare
+  - answer: In baie
+  image: privire_blajina.jpg
+- question: Cum ai grija de gradina?
+  answers:
+  - answer: Nu faci pipi pe trandafiri. In rest e fair game
+  - answer: Sapi cu mainile si uzi cu lacrimile - au naturel
+  - answer: Ce gradina? Lasi florile in vaza si se usuca singure
+  - answer: Ii cumperi lui Marius 2000 mp si face o livada cumva
+  - answer: Il sun pe Stefi si tot nu stiu dupa
+  - answer: Tip la plate si le amenint cu racheta de tenis
+    isTrue: true
+  image: cu_racheta.jpg
+- question: Cum castigi un joc?
+  answers:
+    - answer: Nu-l joci asa ca nu pierzi, deci castigi
+    - answer: Joci cu Iulia in echipa ;)
+    - answer: Ii bati la propriu
+    - answer: Zambesti larg si te holbezi la adversari
+      isTrue: true
+    - answer: Eu nu joc sa castig
+    - answer: Faci tu jocul si schimbi regulile pe parcurs 
+  image: remi_smile.jpg
+- question: 2021, Arena Nationala. Cine statea pe scaunul din fata ta?
+  answers:
+    - answer: Un tip gras si m-am plans tot meciul ca nu vedeam de el 
+    - answer: O tipa buna, 90-60-90 cu master in comunicatii internationale
+    - answer: Un tip care semana cu Mihaita si parea ca n-a platit bilet
+    - answer: (daca e si Marius langa tine) Un tip oarecare
+    - answer: (daca nu e si Marius langa tine) Un tip inalt, bine facut care parea smart si caruia i-am dat numarul
+    - answer: WTF - nici nu mai stiu cine juca
+      isTrue: true
+  image: meci.jpg
+- question: Ce faci cand Toma iti explica cum merg lipiturile pe placute? (sau ce face el la munca)
+  answers:
+    - answer: Ii pui intrebari uitandu-te fix la el sa vezi daca chiar stie 
+    - answer: Te uiti la Stefi sa vezi daca e de acord
+    - answer: Mancarea e mai importanta asa ca faci eye contact cu ea 
+      isTrue: true
+    - answer: Te apuci de lipituri. Teoria nu conteaza
+    - answer: Hmm... si oja lipeste si parca e mai practica
+    - answer: Ii explici cum stau lucrurile de fapt si ce face el de fapt la job
+  image: cu_toma.jpg
+- question: Cum iti arati afectiunea fata de Mihaita?
+  answers:
+    - answer: Cu degetul mijlociu
+      isTrue: true
+    - answer: Lingand piscoturile din tiramisu
+    - answer: Il bati pe umarul stang ca dreptul e deja faultat
+    - answer: Ii cumperi mancare -d'uh
+    - answer: O mangai pe Dusty
+    - answer: Ii lasi inghetata in masina
+  image: mihaita.jpg
+- question: Cum se sta mai bine la Baicoi pe sezlong?
+  answers:
+    - answer: Cu o visinata, intre pomi
+    - answer: Pe 2 sezlonguri, sa ajung la inaltimea celorlalti
+    - answer: Cu o palarie pe cap si pantaloni de vanatoare, in timp ce beau un gin 
+    - answer: Cu sezlongul la mansarda - e aer conditionat
+    - answer: La mijloc, cu ochelarii pe gura
+    - answer: La margine, cu ochelarii pe nas (cum ar si trebui)
+      isTrue: true
+  image: sezlong.jpg
+- question: Care e fitza in Studentpub?
+  answers:
+    - answer: Cu o bere in mana, se stie
+    - answer: Cu doua beri in mana. se stie
+    - answer: Cu doua beri in mana si in rochie inflorata, se stie
+    - answer: Cu doua beri in mana, in rochie inflorata si cu banii la vedere, se stie
+      isTrue: true
+    - answer: Cu doua beri in mana, in rochie inflorata, cu ochelarii de soare si cu banii la vedere, se stie
+    - answer: Cu doua beri in mana, in rochie inflorata, pe tocuri, cu ochelarii de soare si cu banii la vedere, se stie
+  image: studentpub.jpg

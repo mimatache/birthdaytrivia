@@ -20,8 +20,9 @@ type answer struct {
 }
 
 type GameStatus struct {
-	IsAnswerCorrect bool `json:"isAnswerCorrect"`
-	HasNext         bool `json:"hasNext"`
+	IsAnswerCorrect bool   `json:"isAnswerCorrect"`
+	HasNext         bool   `json:"hasNext"`
+	Image           string `json:"image"`
 }
 
 type questionToShow struct {
@@ -61,10 +62,22 @@ func (a *api) answerQuestion(w http.ResponseWriter, r *http.Request) {
 		SendError(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+	if q.IsCorrect(userAnswer.Index) {
+		Send(w,
+			GameStatus{
+				IsAnswerCorrect: true,
+				HasNext:         a.trivia.Next(),
+				Image:           q.Image,
+			},
+			http.StatusOK,
+		)
+		return
+	}
 	Send(w,
 		GameStatus{
-			IsAnswerCorrect: q.IsCorrect(userAnswer.Index),
-			HasNext:         a.trivia.Next(),
+			IsAnswerCorrect: false,
+			HasNext:         false,
+			Image:           q.Image,
 		},
 		http.StatusOK,
 	)
@@ -88,7 +101,7 @@ func (a *api) getNextQuestion(w http.ResponseWriter, r *http.Request) {
 
 func (a *api) reset(w http.ResponseWriter, r *http.Request) {
 	a.trivia.Reset()
-	w.WriteHeader(http.StatusOK)
+	Send(w, map[string]string{"reset": "done"}, http.StatusOK)
 }
 
 type executionError struct {
