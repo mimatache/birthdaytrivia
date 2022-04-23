@@ -5,7 +5,7 @@ import TriviaService from './services/questionaire/questionaire';
 import ImageService from './services/image/image';
 import Welcome from './pages/wlecome/welcome';
 
-const App = () =>{
+const App = () => {
 
   const [accepted, setAccepted] = useState(false)
 
@@ -18,7 +18,7 @@ const App = () =>{
   if (!accepted) {
     return <Welcome onClick={acceptHandler} />
   }
-  return <GameModal api={trivia} image={image}/>
+  return <GameModal api={trivia} image={image} />
 }
 
 export default App;

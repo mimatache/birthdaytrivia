@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -10,8 +13,6 @@ import Button from '@mui/material/Button';
 import TriviaService, { QuestionResponse } from '../../services/questionaire/questionaire'
 import ImageService from '../../services/image/image'
 
-
-
 interface GameProps {
     api: TriviaService;
     image: ImageService;
@@ -22,7 +23,7 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
     const [error, setError] = useState(false);
     const [nextDisabled, setNextDisabled] = useState(true)
     const [helperText, setHelperText] = useState('Choose wisely');
-    const [isAnswerCorrect, setIsAnswerCorrect] = useState<Boolean>(false)
+    const [isAnswerCorrect, setIsAnswerCorrect] = useState(false)
     const [q, setQuestion] = useState<QuestionResponse>();
     const [img, setImg] = useState<string>();
 
@@ -97,47 +98,70 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            width: "100%",
+            height: '100vh',
             fontSize: 10,
+            marginTop: "50px",
+            marginBottom: "50px"
         }}>
-        <form onSubmit={handleSubmit}>
-        <FormControl sx={{ m: 3 }} error={error} variant="standard">
-            <FormLabel id="demo-error-radios">{q?.question}</FormLabel>
-            <RadioGroup
-                aria-labelledby="demo-error-radios"
-                name="quiz"
-                value={value}
-                onChange={handleRadioChange}
-            >
-                {q?.answers.map((v, i) => {
-                    return <FormControlLabel value={i} control={<Radio />} label={v} key={i} />
-                })}
-            </RadioGroup>
-            <FormHelperText>{helperText}</FormHelperText>
-            <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined" style={{marginBottom: 10}}>
-                Check Answer
-            </Button>
-            <Button
-                variant="contained"
-                size="large"
-                color="secondary"
-                onClick={handleNextQuestion}
-                disabled={nextDisabled}
-                style={{marginBottom: 10}}
-            >
-                Next Question
-            </Button>
-            <Button
-                variant="contained"
-                size="large"
-                color="secondary"
-                onClick={handleReset}
-                style={{marginBottom: 10}}
-            >
-                Reset
-            </Button>
-        </FormControl>
-        </form>
-        {(isAnswerCorrect) && <img src={img} alt="icons" />}
+        <Card>
+        {(isAnswerCorrect) && <CardMedia
+            component="img"
+            image={img} 
+            alt="icons" 
+        />}
+        <CardContent style={
+            {display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 6}}>
+            <form onSubmit={handleSubmit}>
+                <FormControl sx={{ m: 3 }} error={error} variant="standard">
+                    <FormLabel id="demo-error-radios">{q?.question}</FormLabel>
+                    <RadioGroup
+                        aria-labelledby="demo-error-radios"
+                        name="quiz"
+                        value={value}
+                        onChange={handleRadioChange}
+                    >
+                        {q?.answers.map((v, i) => {
+                            return <FormControlLabel value={i} control={<Radio />} label={v} key={i} />
+                        })}
+                    </RadioGroup>
+                    <FormHelperText>{helperText}</FormHelperText>
+                    <Button 
+                        sx={{ mt: 1, mr: 1 }} 
+                        type="submit" 
+                        variant="outlined" 
+                        disabled={isAnswerCorrect}
+                        style={{marginBottom: 10}}
+                    >
+                        Check Answer
+                    </Button>
+                    
+                    <Button
+                        variant="contained"
+                        size="large"
+                        color="secondary"
+                        onClick={handleNextQuestion}
+                        disabled={nextDisabled}
+                        style={{marginBottom: 10}}
+                    >
+                        Next Question
+                    </Button>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        color="secondary"
+                        onClick={handleReset}
+                        style={{marginBottom: 10}}
+                    >
+                        Reset
+                    </Button>
+                </FormControl>
+            </form>
+        </CardContent>
+        </Card>
         </div>
     );
 }
