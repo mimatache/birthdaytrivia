@@ -1,8 +1,9 @@
 name: Build Artifacts
 
-on: 
-  release:
-    types: [created]
+on:  
+  push:
+    tags:
+      - '*'
 
 jobs:
   tag:
