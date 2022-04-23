@@ -14,6 +14,7 @@ var (
 type Question struct {
 	Text    string   `yaml:"question"`
 	Answers []Answer `yaml:"answers"`
+	Image   string   `yaml:"image"`
 }
 
 func (q *Question) IsCorrect(answer int) bool {
