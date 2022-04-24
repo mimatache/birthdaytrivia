@@ -45,7 +45,7 @@
   - answer: Ce gradina? Lasi florile in vaza si se usuca singure
   - answer: Ii cumperi lui Marius 2000 mp si face o livada cumva
   - answer: Il sun pe Stefi si tot nu stiu dupa
-  - answer: Tip la plate si le amenint cu racheta de tenis
+  - answer: Tip la plante si le amenint cu racheta de tenis
     isTrue: true
   image: cu_racheta.jpg
 - question: Cum castigi un joc?
@@ -108,3 +108,195 @@
     - answer: Cu doua beri in mana, in rochie inflorata, cu ochelarii de soare si cu banii la vedere, se stie
     - answer: Cu doua beri in mana, in rochie inflorata, pe tocuri, cu ochelarii de soare si cu banii la vedere, se stie
   image: studentpub.jpg
+- question: Ce te poate tine departe de Marius?
+  answers: 
+  - answer: Nu e nevoie de mare lucru
+  - answer: Un curs de fizica
+  - answer: O pisica simpatica
+  - answer: Un caine durduliu
+    isTrue: true
+  - answer: Prajituuuuuri
+  - answer: Visinata
+  image: cara.jpeg
+- question: Ce ne dorim cu totii sa ne lasa Mosu sub brad?
+  answers:
+  - answer: Merisoare
+  - answer: Lego
+  - answer: Pateu
+  - answer: Poster cu Marvel
+  - answer: Un pirat
+    isTrue: true
+  - answer: Set de Poker
+  image: rom_cadou.jpeg
+- question: Care e credinta ta secreta?
+  answers:
+    - answer: Scientologie
+    - answer: Flat Earth
+    - answer: Shrekism
+    - answer: Pastafarianism
+      isTrue: true
+    - answer: Our Lady Of Perpetual Exemption
+    - answer: Jediism
+  image: pastafarian.jpg
+- question: Cum depasesti raul de masina?
+  answers:
+    - answer: Te imbeti inainte
+    - answer: Stai in fata
+    - answer: Tragi un pui de somn
+      isTrue: true
+    - answer: Il tii pe Marius de mana
+    - answer: Mergi cu trenul
+    - answer: Stai in portbagaj
+  image: maria_doarme.jpeg
+- question: Cat esti de mare?
+  answers:
+  - answer: Incap intr-un rucsac
+    isTrue: true
+  - answer: Cat bratele lui Marius
+  - answer: Aproape ajung la raftul de sus
+  - answer: Uneori intru in bar fara sa arat buletinul
+  - answer: Imi iau haine de la Next
+  - answer: Apar in povestea cu Alba ca Zapada
+  image: maria_mica.jpeg
+- question: Ce bei cand mergi in Grecia?
+  answers:
+  - answer: Ouzo
+  - answer: Aqua Carpatica
+  - answer: Mastika
+  - answer: Retsina
+  - answer: Mythos
+    isTrue: true
+  - answer: Tsipuro
+  image: mythos.jpeg
+- question: Ce faci la plaja?
+  answers:
+  - answer: Joci volei cu Marius
+  - answer: Ma prajesc ca o chiftea
+  - answer: Stau de vorba cu Moromete
+    isTrue: true
+  - answer: Corectez lucrari
+  - answer: Inot cu aripioare
+  - answer: Castele de nisip
+  image: stefi_la_plaja.jpeg
+- question: Cum poti fi stavilita?
+  answers:
+  - answer: Ma tine Stefi de mana
+    isTrue: true
+  - answer: Ma ia  Marius in brate
+  - answer: Port un ham pentru siguranta mea
+  - answer: Mi se ia bautura
+  - answer: Pun tocuri in picioare
+  - answer: Ma intalnesc cu sefu
+  image: stefi_tinut_mana.jpeg
+- question: In ce te imbraci cand vrei sa fii eleganta?
+  answers:
+  - answer: Imi pun un papion
+  - answer: Imi calc hanoracul
+  - answer: Imi pun broboada
+  - answer: Rochie lunga
+  - answer: Trening si pantofi cu toc
+  - answer: Little Black Dress
+    isTrue: true
+  image: bal.jpeg
+- question: Cand am tipat intr-o situatie stresanta?
+  answers:
+  - answer: Credeam ca pic la examenul de Meconomie
+  - answer: La escape room
+    isTrue: true
+  - answer: Credeam ca am mancat carne de porc in loc de pui
+  - answer: Cand mi-a aparut un cos
+  - answer: La trageri
+  - answer: Cand am vazut ca nu aveam portofel
+  image: escape.jpeg
+- question: Ce faci la Stroe?
+  answers:
+  - answer: Incepi sa ai fotofobie
+  - answer: Mananci mai putin si bei mai mult
+  - answer: Joci un Fifa
+    isTrue: true
+  - answer: Am fost eu la Stroe?
+  - answer: Il meditez
+  - answer: Il pun sa imi faca tema la info 
+  image: stroe.jpeg
+- question: Ce trebuie sa ai neaparat in apartament?
+  answers:
+  - answer: Un pick-up
+  - answer: Un frigider plin de magneti
+    isTrue: true
+  - answer: Un pres sa poata dormi si Marius
+  - answer: Un poster cu Lady Gaga
+  - answer: O scrumiera
+  - answer: Matematica distractiva
+  image: apartament.jpeg
+- question: Cum se joaca Jenga?
+  answers:
+  - answer: Cu tupeu
+  - answer: Cu degetele de la picioare - am nevoie de o provocare
+  - answer: Dupa ce beau mult rom
+  - answer: Pe podea
+  - answer: Cu oameni faini
+  - answer: Cu o bere langa
+    isTrue: true
+  image: jenga.jpg
+- question: Cum petrec fetele?
+  answers:
+  - answer: Cu KFC
+  - answer: La Maria si Ion
+  - answer: Sus pe bar, sus pe bar
+  - answer: Cu coronite
+    isTrue: true
+  - answer: La Spa 
+  - answer: Pe trotuar, cu o sticla de rom langa
+  image: petrec_fetele.jpeg
+- question: Cum poti sa il vezi pe Toma la bustul gol?
+  answers:
+  - answer: Intri in baie fara sa bati la usa
+  - answer: Mereu. Nu se mai satura de el
+  - answer: Photoshop, n-ai alta solutie
+  - answer: +30 grade si ii dai o bere calda
+  - answer: Il duci la Eforie
+  - answer: Te uiti in ochii mei
+    isTrue: true
+  image: toma_bust.jpeg
+- question: Cand ai o privire usor ingrijorata?
+  answers: 
+  - answer: Cand e plicul gol
+  - answer: Cand te gandesti 'sper sa nu-l sparg'
+    isTrue: true
+  - answer: Cand te uiti la burta lui Marius
+  - answer: Cand fixezi un bug si apar doua
+  - answer: Cand e visinata pe terminate
+  - answer: Salariul vine maine, tigarile se termina azi 
+  image: baby.jpeg
+- question: Ce se intampla cand stai peste program?
+  answers:
+  - answer: Marius termina de facut tot Legoul
+  - answer: Se face mancarea singura
+  - answer: Bautura si manele
+  - answer: Marius e trist si se uita la ceas
+    isTrue: true
+  - answer: Esti obosita
+  - answer: Ma bucur, e mai liber la metrou
+  image: peste_program.jpeg
+- question: De ce trebuie sa renunti la pantalonii negri?
+  answers:
+  - answer: Nu-i plac lui Marius
+  - answer: Osbourne
+    isTrue: true
+  - answer: Nu mai sunt la moda 
+  - answer: Trec la fuste
+  - answer: Imi fac fundul sa para mic 
+  - answer: Mi-am schimbat jobul
+  image: ozzy.jpeg
+- question: Care e al doilea animal preferat de mine?
+  answers:
+  - answer: Cainele
+  - answer: La Luna
+  - answer: Marius
+  - answer: Gandacul de Colorado
+  - answer: La Ozy 
+  - answer: Girafa
+    isTrue: true 
+  image: girafa.jpeg
+
+

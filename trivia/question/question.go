@@ -44,7 +44,7 @@ func (q *Question) Validate() error {
 		}
 	}
 	if !hasCorrectAnswer {
-		return ErrNoValidAnswer
+		return fmt.Errorf("%w; %s", ErrNoValidAnswer, q.Text)
 	}
 	return nil
 }

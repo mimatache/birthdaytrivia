@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -27,7 +27,7 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-  };
+};
 
 interface GameProps {
     api: TriviaService;
@@ -43,6 +43,7 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
     const [q, setQuestion] = useState<QuestionResponse>();
     const [img, setImg] = useState<string>();
     const [modalOpen, setModalOpen] = useState(false)
+    const [victory, setVictory] = useState(false)
 
     useEffect(() => {
         const fetchQuestion = () => {
@@ -78,6 +79,10 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
                 })
                 setIsAnswerCorrect(true)
                 setNextDisabled(!response.hasNext)
+                if (!response.hasNext) {
+                    setVictory(true)
+                }
+                setImg(undefined)
             } else if (!response.isAnswerCorrect) {
                 handleReset();
                 handleOpen();
@@ -89,7 +94,7 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
         }).catch((err) => {
             setError(err.message);
         })
-        
+
     };
 
     const handleNextQuestion = () => {
@@ -107,10 +112,8 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
     const handleReset = () => {
         props.api.reset()
         handleNextQuestion()
+        setVictory(false)
     };
-
-
-
 
     return (
         <div style={{
@@ -118,84 +121,110 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
             alignItems: 'center',
             justifyContent: 'center',
             width: "100%",
-            height: '100vh',
+            height: '100%',
             fontSize: 10,
             marginTop: "50px",
             marginBottom: "50px"
         }}>
-        <Modal
-            open={modalOpen}
-            onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        >
-            <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-                Nu prea te pricepi.
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                O luam de la capat!
-            </Typography>
-            </Box>
-        </Modal>
-        <Card>
-        {(isAnswerCorrect) && <CardMedia
-            component="img"
-            image={img} 
-            alt="icons" 
-        />}
-        <CardContent style={
-            {display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 6}}>
-            <form onSubmit={handleSubmit}>
-                <FormControl sx={{ m: 3 }} error={error} variant="standard">
-                    <FormLabel id="demo-error-radios">{q?.question}</FormLabel>
-                    <RadioGroup
-                        aria-labelledby="demo-error-radios"
-                        name="quiz"
-                        value={value}
-                        onChange={handleRadioChange}
-                    >
-                        {q?.answers.map((v, i) => {
-                            return <FormControlLabel value={i} control={<Radio />} label={v} key={i} />
-                        })}
-                    </RadioGroup>
-                    <FormHelperText>{helperText}</FormHelperText>
-                    <Button 
-                        sx={{ mt: 1, mr: 1 }} 
-                        type="submit" 
-                        variant="outlined" 
-                        disabled={isAnswerCorrect}
-                        style={{marginBottom: 10}}
-                    >
-                        Check Answer
-                    </Button>
-                    
-                    <Button
-                        variant="contained"
-                        size="large"
-                        color="secondary"
-                        onClick={handleNextQuestion}
-                        disabled={nextDisabled}
-                        style={{marginBottom: 10}}
-                    >
-                        Next Question
-                    </Button>
-                    <Button
-                        variant="contained"
-                        size="large"
-                        color="secondary"
-                        onClick={handleReset}
-                        style={{marginBottom: 10}}
-                    >
-                        Reset
-                    </Button>
-                </FormControl>
-            </form>
-        </CardContent>
-        </Card>
+            <Modal
+                open={modalOpen}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Nu prea te pricepi. Asa e cand imbatranesti....
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        Hai sa facem si un test de memorie.
+                        O luam de la capat!
+                    </Typography>
+                </Box>
+            </Modal>
+            <Card>
+                {(isAnswerCorrect) && <CardMedia
+                    component="img"
+                    image={img}
+                    alt="icons"
+                    style={
+                        {
+                            flex: 1,
+                            width: '100%',
+                            height: '100%',
+                        }
+                    }
+                />}
+                <CardContent style={
+                    {
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 6
+                    }}>
+                    <form onSubmit={handleSubmit}>
+                        <FormControl sx={{ m: 3 }} error={error} variant="standard">
+                            <FormLabel id="demo-error-radios">{q?.question}</FormLabel>
+                            <RadioGroup
+                                aria-labelledby="demo-error-radios"
+                                name="quiz"
+                                value={value}
+                                onChange={handleRadioChange}
+                            >
+                                {q?.answers.map((v, i) => {
+                                    return <FormControlLabel value={i} control={<Radio />} label={v} key={i} />
+                                })}
+                            </RadioGroup>
+                            <FormHelperText>{helperText}</FormHelperText>
+                            <Button
+                                sx={{ mt: 1, mr: 1 }}
+                                type="submit"
+                                variant="outlined"
+                                disabled={isAnswerCorrect}
+                                style={{ marginBottom: 10 }}
+                            >
+                                Check Answer
+                            </Button>
+                            {(!victory) &&
+                                <>
+                                    <Button
+                                        variant="contained"
+                                        size="large"
+                                        color="secondary"
+                                        onClick={handleNextQuestion}
+                                        disabled={nextDisabled}
+                                        style={{ marginBottom: 10 }}
+                                    >
+                                        Next Question
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        size="large"
+                                        color="secondary"
+                                        onClick={handleReset}
+                                        style={{ marginBottom: 10 }}
+                                    >
+                                        Reset
+                                    </Button>
+                                </>
+                            }
+                            {
+                                (victory) && 
+                                <Button
+                                        variant="contained"
+                                        size="large"
+                                        color="secondary"
+                                        onClick={handleReset}
+                                        style={{ marginBottom: 10 }}
+                                    >
+                                        Felicitari! Ai Castigat!
+                                             Play Again?
+                                    </Button>
+                            }
+                        </FormControl>
+                    </form>
+                </CardContent>
+            </Card>
         </div>
     );
 }
