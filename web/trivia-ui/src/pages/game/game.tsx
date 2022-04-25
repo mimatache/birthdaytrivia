@@ -40,6 +40,7 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
     const [nextDisabled, setNextDisabled] = useState(true)
     const [helperText, setHelperText] = useState('Choose wisely');
     const [isAnswerCorrect, setIsAnswerCorrect] = useState(false)
+    const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
     const [q, setQuestion] = useState<QuestionResponse>();
     const [img, setImg] = useState<string>();
     const [modalOpen, setModalOpen] = useState(false)
@@ -61,8 +62,12 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
     const handleClose = () => setModalOpen(false);
 
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue((event.target as HTMLInputElement).value);
+        const val = (event.target as HTMLInputElement).value
+        setValue(val);
         setHelperText(' ');
+        if (val !== "" || val !== null || val !== undefined) {
+            setIsSubmitDisabled(false);
+        }
         setError(false);
     };
 
@@ -83,6 +88,8 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
                     setVictory(true)
                 }
                 setImg(undefined)
+                setIsSubmitDisabled(true)
+                setValue('')
             } else if (!response.isAnswerCorrect) {
                 handleReset();
                 handleOpen();
@@ -106,6 +113,7 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
         setValue('')
         setNextDisabled(true)
         setIsAnswerCorrect(false)
+        setIsSubmitDisabled(false)
         setHelperText('')
     };
 
@@ -180,7 +188,7 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
                                 sx={{ mt: 1, mr: 1 }}
                                 type="submit"
                                 variant="outlined"
-                                disabled={isAnswerCorrect}
+                                disabled={isSubmitDisabled}
                                 style={{ marginBottom: 10 }}
                             >
                                 Check Answer
@@ -209,17 +217,17 @@ const GameModal: React.FC<GameProps> = (props: GameProps) => {
                                 </>
                             }
                             {
-                                (victory) && 
+                                (victory) &&
                                 <Button
-                                        variant="contained"
-                                        size="large"
-                                        color="secondary"
-                                        onClick={handleReset}
-                                        style={{ marginBottom: 10 }}
-                                    >
-                                        Felicitari! Ai Castigat!
-                                             Play Again?
-                                    </Button>
+                                    variant="contained"
+                                    size="large"
+                                    color="secondary"
+                                    onClick={handleReset}
+                                    style={{ marginBottom: 10 }}
+                                >
+                                    Felicitari! Ai Castigat!
+                                    Play Again?
+                                </Button>
                             }
                         </FormControl>
                     </form>
